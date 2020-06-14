@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="assets/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    }
+    canvas {
+    display: block;
+    }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <script>
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        //vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+planId = "Plan001";
+keyId = "Key001";
+
+$(document).ready(function() {
+    $("#zHeight").mouseup(function() {
+        setZ($("#zHeight").val());
+    });
+
+    // alert(getUrlVars());
+    locData = getUrlVars();
+
+    planId = locData["plan"];
+    keyId = locData["key"];
+
+    console.log(locData);
+
+
+    $.post("getGrid", {key: keyId, plan: planId}).done(function( data ) {
+        // $( ".result" ).html( data );
+        // alert(data);
+        // showKeyTable(data);
+        // mouseGrid = data;
+        console.log(data);
+        updateMouseGrid(data);
+    });
+});
+    </script>
+  </head>
+  <body>
+    <script src="assets/painter.js"></script>
+
+
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="aligned-password">Building Height</label>
+                <input type="range" id="zHeight" name="zHeight" min="0" max="30">
+            </div>
+        </fieldset>
+    </form>
+  </body>
+</html>
