@@ -3,8 +3,12 @@ Air Sanitization Planner, application for Hack The Crisis Hackathon by ILink Sys
 
 The application is up and running at http://52.149.231.33:5000/
 
-Air Sanitization Planner development team :-
+Air Sanitization Planner development team :
 - Christ Prateek Prasanna Xaxa
 - Parmanand Kumar
 - Khushali Porwal
 - Gourav Patel
+
+## Snapshot :
+
+![snap001](/Demo_app_screenshot.png)
